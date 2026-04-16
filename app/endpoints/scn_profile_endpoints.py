@@ -1,4 +1,5 @@
 from typing import Optional
+import uuid
 
 from fastapi import Depends, status, Path, Query
 from fastapi.encoders import jsonable_encoder
@@ -29,7 +30,7 @@ def create_service_class(
 
     data_out = schemas.ServiceClassInDb(
         **data_in.model_dump(),
-        **{"serviceClassId": "554aab05-dd7f-44ec-be0c-749eb083505c"},
+        **{"serviceClassId": str(uuid.uuid4())},
     )
 
     return JSONResponse(
@@ -100,7 +101,7 @@ def create_service_class_value(
 
     data_out = schemas.ServiceClassValueInDb(
         **data_in.model_dump(),
-        **{"serviceClassValueId": "554aab05-dd7f-44ec-be0c-749eb083505c"},
+        **{"serviceClassValueId": str(uuid.uuid4())},
     )
 
     return JSONResponse(
@@ -175,7 +176,7 @@ def create_service_class_qos(
 
     data_out = schemas.ServiceClassQosInDb(
         **data_in.model_dump(),
-        **{"serviceClassQosId": "554aab05-dd7f-44ec-be0c-749eb083505c"},
+        **{"serviceClassQosId": str(uuid.uuid4())},
     )
 
     return JSONResponse(
@@ -248,7 +249,7 @@ def create_scn_profile(
 
     data_out = schemas.ScnProfileInDb(
         **data_in.model_dump(),
-        **{"scnProfileId": "554aab05-dd7f-44ec-be0c-749eb083505c"},
+        **{"scnProfileId": str(uuid.uuid4())},
     )
 
     return JSONResponse(

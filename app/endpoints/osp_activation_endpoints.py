@@ -1,4 +1,5 @@
 from typing import Optional
+import uuid
 
 from fastapi import Depends, status, Path, Query
 from fastapi.encoders import jsonable_encoder
@@ -32,7 +33,7 @@ def create_activate_field_rpd(
 
     data_out = schemas.ActivateFieldRpdInDb(
         **data_in.model_dump(),
-        **{"activateFieldRpdId": "554aab05-dd7f-44ec-be0c-749eb083505c"},
+        **{"activateFieldRpdId": str(uuid.uuid4())},
     )
 
     return JSONResponse(
@@ -109,7 +110,7 @@ def create_activate_shelf_rpd(
 
     data_out = schemas.ActivateShelfRpdInDb(
         **data_in.model_dump(),
-        **{"activateShelfRpdId": "554aab05-dd7f-44ec-be0c-749eb083505c"},
+        **{"activateShelfRpdId": str(uuid.uuid4())},
     )
 
     return JSONResponse(

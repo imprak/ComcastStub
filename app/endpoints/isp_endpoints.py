@@ -1,4 +1,5 @@
 from typing import Optional
+import uuid
 
 from fastapi import Depends, status, Path, Query
 from fastapi.encoders import jsonable_encoder
@@ -31,7 +32,7 @@ def create_buhm(
     )
 
     data_out = schemas.BuhmInDb(
-        **data_in.model_dump(), **{"buhmId": "554aab05-dd7f-44ec-be0c-749eb083505c"}
+        **data_in.model_dump(), **{"buhmId": str(uuid.uuid4())}
     )
 
     return JSONResponse(
@@ -109,7 +110,7 @@ def create_hub(
     data_out = schemas.HubInDb(
         **data_in.model_dump(),
         **{
-            "hubId": "554aab05-dd7f-44ec-be0c-749eb083505c",
+            "hubId": str(uuid.uuid4()),
             "parentHubName": data_in.refParentHubName,
         },
     )
@@ -181,7 +182,7 @@ def create_site_intent(
 
     data_out = schemas.SiteIntentInDb(
         **data_in.model_dump(),
-        **{"siteIntentId": "554aab05-dd7f-44ec-be0c-749eb083505c"},
+        **{"siteIntentId": str(uuid.uuid4())},
     )
 
     return JSONResponse(
@@ -255,7 +256,7 @@ def create_cpod_intent(
 
     data_out = schemas.CpodIntentInDb(
         **data_in.model_dump(),
-        **{"cpodIntentId": "554aab05-dd7f-44ec-be0c-749eb083505c"},
+        **{"cpodIntentId": str(uuid.uuid4())},
     )
 
     return JSONResponse(
@@ -330,7 +331,7 @@ def create_ppod_intent(
         **data_in.model_dump(),
         **{
             "cpodIntentId": data_in.refCpodIntentId,
-            "ppodIntentId": "554aab05-dd7f-44ec-be0c-749eb083505c",
+            "ppodIntentId": str(uuid.uuid4()),
         },
     )
 
@@ -409,7 +410,7 @@ def create_daas_intent(
 
     data_out = schemas.DaasIntentInDb(
         **data_in.model_dump(),
-        **{"daasIntentId": "554aab05-dd7f-44ec-be0c-749eb083505c"},
+        **{"daasIntentId": str(uuid.uuid4())},
     )
 
     return JSONResponse(
@@ -481,7 +482,7 @@ def create_hagg_intent(
 
     data_out = schemas.HaggIntentinDb(
         **data_in.model_dump(),
-        **{"haggIntentId": "554aab05-dd7f-44ec-be0c-749eb083505c"},
+        **{"haggIntentId": str(uuid.uuid4())},
     )
 
     return JSONResponse(

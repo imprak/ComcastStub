@@ -1,4 +1,5 @@
 from typing import Optional
+import uuid
 
 from fastapi import Depends, status, Path, Query
 from fastapi.encoders import jsonable_encoder
@@ -32,7 +33,7 @@ def create_remote_phy_intent(
 
     data_out = schemas.RemotePhyIntentInDb(
         **data_in.model_dump(),
-        **{"remotePhyIntentId": "554aab05-dd7f-44ec-be0c-749eb083505c"},
+        **{"remotePhyIntentId": str(uuid.uuid4())},
     )
 
     return JSONResponse(
@@ -107,7 +108,7 @@ def create_spectrum_recommendation(
 
     data_out = schemas.SpectrumRecommendationInDb(
         **data_in.model_dump(),
-        **{"spectrumRecommendationId": "554aab05-dd7f-44ec-be0c-749eb083505c"},
+        **{"spectrumRecommendationId": str(uuid.uuid4())},
     )
 
     return JSONResponse(
@@ -184,7 +185,7 @@ def create_video_configuration(
 
     data_out = schemas.VideoConfigurationInDb(
         **data_in.model_dump(),
-        **{"videoConfigurationId": "554aab05-dd7f-44ec-be0c-749eb083505c"},
+        **{"videoConfigurationId": str(uuid.uuid4())},
     )
 
     return JSONResponse(
